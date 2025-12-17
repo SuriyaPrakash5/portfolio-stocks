@@ -1,3 +1,4 @@
+
 let activeAppFilter = null;
 
 let stocks = JSON.parse(localStorage.getItem("stocks")) || [];
@@ -103,44 +104,48 @@ renderDashboard();
 function saveStock(e) {
   e.preventDefault();
 
+  // 🔥 EXPLICIT ELEMENT FETCH (MOBILE SAFE)
+  const nameEl = document.getElementById("name");
+  const buyPriceEl = document.getElementById("buyPrice");
+  const quantityEl = document.getElementById("quantity");
+  const currentPriceEl = document.getElementById("currentPrice");
+  const appEl = document.getElementById("app");
+  const editIndexEl = document.getElementById("editIndex");
+
+  if (!nameEl || !appEl) {
+    alert("Form not loaded properly");
+    return;
+  }
+
   let now = Date.now();
-  let index = editIndex.value;
+  let index = editIndexEl.value;
+
+  let stockData = {
+    name: nameEl.value.trim(),
+    buyPrice: +buyPriceEl.value,
+    quantity: +quantityEl.value,
+    currentPrice: +currentPriceEl.value,
+    app: appEl.value.trim(),
+    lastUpdated: now
+  };
 
   if (index === "") {
-    /* ---- ADD NEW STOCK ---- */
-    let currentValue = +currentPrice.value * +quantity.value;
-
-    stocks.push({
-      name: name.value.trim(),
-      buyPrice: +buyPrice.value,
-      quantity: +quantity.value,
-      currentPrice: +currentPrice.value,
-      app: app.value.trim(),
-      lastUpdated: now,
-      prevValue: currentValue   // baseline
-    });
-
+    /* ADD NEW */
+    let value = stockData.currentPrice * stockData.quantity;
+    stockData.prevValue = value;
+    stocks.push(stockData);
   } else {
-    /* ---- EDIT EXISTING STOCK ---- */
+    /* EDIT */
     let old = stocks[index];
     let oldValue = old.currentPrice * old.quantity;
-    let newValue = +currentPrice.value * +quantity.value;
-
-    stocks[index] = {
-      ...old,
-      name: name.value.trim(),
-      buyPrice: +buyPrice.value,
-      quantity: +quantity.value,
-      currentPrice: +currentPrice.value,
-      app: app.value.trim(),
-      lastUpdated: now,
-      prevValue: oldValue   // preserve baseline
-    };
+    stockData.prevValue = oldValue;
+    stocks[index] = { ...old, ...stockData };
   }
 
   localStorage.setItem("stocks", JSON.stringify(stocks));
   window.location.href = "index.html";
 }
+
 
 /* ---------------- EDIT ---------------- */
 function editStock(i) {
