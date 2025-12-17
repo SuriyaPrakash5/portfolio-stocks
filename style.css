@@ -259,5 +259,29 @@ body.dark .chart-section {
   transition: width 0.4s ease;
 }
 
+.stock-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+body.dark .stock-values {
+  color: #9ca3af;
+}
+
+.pl {
+  font-weight: 600;
+}
+.summary-row h2,
+.summary-row h3 {
+  font-size: clamp(20px, 5vw, 25px); /* 🔥 auto scale */
+  word-break: break-all;            /* 🔥 break long numbers */
+  white-space: nowrap;              /* optional */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 
