@@ -282,6 +282,18 @@ body.dark .stock-values {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.stock-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+body.dark .stock-meta {
+  color: #9ca3af;
+}
+
 
 
 
