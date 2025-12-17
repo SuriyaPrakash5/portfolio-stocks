@@ -1,4 +1,3 @@
-
 let activeAppFilter = null;
 
 let stocks = JSON.parse(localStorage.getItem("stocks")) || [];
@@ -73,6 +72,14 @@ function renderDashboard() {
             ${pl >= 0 ? "▲" : "▼"} ₹${Math.abs(pl).toFixed(2)}
           </div>
         </div>
+      <!-- INVESTED / CURRENT ROW -->
+      <div class="stock-values">
+        <span>Invested ₹${invested.toFixed(2)}</span>
+        <span>Current ₹${value.toFixed(2)}</span>
+      </div>
+
+      <!-- MINI P/L BAR -->
+
       </div>
     `;
   });
@@ -252,3 +259,10 @@ function renderAppPLChart(stocks) {
 }
 
 renderAppPLChart(stocks);
+
+function formatINR(num) {
+  if (num >= 1e7) return `₹${(num / 1e7).toFixed(2)} Cr`;
+  if (num >= 1e5) return `₹${(num / 1e5).toFixed(2)} L`;
+  return `₹${num.toFixed(2)}`;
+}
+
