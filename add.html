@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Investment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-container">
+  <h2>Add / Edit Investment</h2>
+
+  <!-- 🔥 FORM MUST CALL saveStock -->
+  <form id="stockForm" onsubmit="saveStock(event)">
+
+    <input type="hidden" id="editIndex">
+
+    <label>Stock Name</label>
+    <input id="name" required placeholder="INFY">
+
+    <label>Buy Price</label>
+    <input id="buyPrice" type="number" step="0.01" required>
+
+    <label>Quantity</label>
+    <input id="quantity" type="number" required>
+
+    <label>Current Price</label>
+    <input id="currentPrice" type="number" step="0.01" required>
+
+    <label>App</label>
+    <input id="app" required placeholder="Groww / Zerodha">
+
+    <!-- ✅ MUST BE type=submit -->
+    <button type="submit" class="primary-btn">
+      Save Investment
+    </button>
+
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

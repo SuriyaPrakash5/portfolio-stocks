@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="dark-btn sticky" onclick="toggleDark()">🌙</button>
+
+<div class="app-container">
+
+  <div class="header">
+    <h1>My Portfolio</h1>
+    <p>All investments at one place</p>
+  </div>
+
+  <!-- SUMMARY -->
+  <div id="summaryCard" class="summary-card profit">
+
+    <div class="summary-row">
+      <div>
+        <span>Total Investment</span>
+        <h2 id="totalInvested">₹0.00</h2>
+      </div>
+      <div>
+        <span>Current Value</span>
+        <h2 id="currentValue">₹0.00</h2>
+      </div>
+    </div>
+
+    <div class="summary-row bottom">
+      <div class="pl-block">
+        <span>Overall P/L</span>
+        <h3 id="totalPL">₹0.00</h3>
+        <small id="totalPLPercent">0.00%</small>
+      </div>
+
+      <div class="pl-block">
+        <span>Today’s P/L</span>
+        <h3 id="todayPL">₹0.00</h3>
+      </div>
+    </div>
+
+  </div>
+
+<section class="chart-section">
+  <h3>Investment by App</h3>
+  <canvas id="appChart"></canvas>
+</section>
+
+
+
+
+
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- HOLDINGS -->
+  <h3 class="section-title">Holdings</h3>
+  <div id="stockList"></div>
+
+</div>
+
+<a href="add.html" class="fab">＋</a>
+
+
+<script src="script.js"></script>
+</body>
+</html>
