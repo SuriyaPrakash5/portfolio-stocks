@@ -72,6 +72,11 @@ function renderDashboard() {
             ${pl >= 0 ? "▲" : "▼"} ₹${Math.abs(pl).toFixed(2)}
           </div>
         </div>
+        <!-- QTY × PRICE -->
+      <div class="stock-meta">
+        <span>Qty ${s.quantity} × ₹${s.currentPrice.toFixed(2)}</span>
+        <span>Avg Buy ₹${s.buyPrice.toFixed(2)}</span>
+      </div>
       <!-- INVESTED / CURRENT ROW -->
       <div class="stock-values">
         <span>Invested ₹${invested.toFixed(2)}</span>
@@ -265,4 +270,5 @@ function formatINR(num) {
   if (num >= 1e5) return `₹${(num / 1e5).toFixed(2)} L`;
   return `₹${num.toFixed(2)}`;
 }
+
 
